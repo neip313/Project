@@ -4,7 +4,7 @@
 
 ## 공모전  
 ---
-- KDX 한국데이터거래소 "소비트렌드 코리아 2020 KDX(Consumption Trend Analysis) 유동소비데이터분석 & 시각화경진대회"
+- :point_right: KDX 한국데이터거래소 "소비트렌드 코리아 2020 KDX(Consumption Trend Analysis) 유동소비데이터분석 & 시각화경진대회"
   + 작업툴: RStudio 
   + 인원 : 3명 
   + 기간 : 2020.10.12 - 2020.10.24
@@ -16,7 +16,7 @@
   + 결과 : 3등, 우수상(R러뷰 팀) [→ 매경 기사 보기](https://www.mk.co.kr/news/it/view/2020/11/1187287/)
   ![](image/)
   
-- DACON : Data Science AI Competitions - DACON "소설 작가 분류 AI 경진대회"
+-  :point_right: DACON : Data Science AI Competitions - DACON "소설 작가 분류 AI 경진대회"
   (자연어 처리 경험을 위해 참가) 
   - 작업툴 : Python, Google Colab
   - 인원 : 2명
