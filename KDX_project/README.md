@@ -8,7 +8,6 @@
 
 ## 1st. KDX_소비트렌드 코리아 2020   
 ![img_kdx1](img/kdx_event1.png)  
-![img_kdx2](img/kdx_event2.png)  
 
 **KDX 유통·소비데이터 분석 & 시각화 경진대회**  
 - **일정:** 2020.09.23 - 2020.10.25  
