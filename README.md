@@ -16,7 +16,7 @@
   + 결과 : 3등, 우수상(R러뷰 팀) [→ 매경 기사 보기](https://www.mk.co.kr/news/it/view/2020/11/1187287/)
   ![](image/)
   
--  :point_right: DACON : Data Science AI Competitions - DACON "소설 작가 분류 AI 경진대회"
+- :point_right: DACON : Data Science AI Competitions - DACON "소설 작가 분류 AI 경진대회"
   (자연어 처리 경험을 위해 참가) 
   - 작업툴 : Python, Google Colab
   - 인원 : 2명
