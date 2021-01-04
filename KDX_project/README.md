@@ -80,7 +80,8 @@ install.packages("labeling")
 install.packages("extrafont")
 install.packages('devtools')
 devtools::install_github('bbc/bbplot')
-```
+``` 
+
 ```r
 # 라이브러리 불러오기
 library(readxl)
@@ -91,7 +92,8 @@ library(ggplot2)
 library(lubridate)
 library(labeling)
 library(extrafont)
-```
+``` 
+
 - readxl: 엑셀 파일 읽어오기
 - dplyr: bind_rows, glimpse, filter, select, group_by, summarise 함수 사용
 - tidyr: seperate, join 함수 사용
@@ -116,7 +118,7 @@ pacman::p_load('dplyr', 'tidyr', 'gapminder',
 
 ## 2. Mcorpotarion Data
 ### 2.1 기초 & 색조 화장품 엑셀 정리 
-```{r}
+```r
 # 사용할 데이터만 정리하기(메이크업, 스킨케어)
 # 분석에 필요한 메이크업, 스킨케어 제품 구매율만 따로 use_data에 넣어 사용
 files <- list.files(path = "use_data", pattern = "*.xlsx", full.names = T) 
@@ -125,7 +127,7 @@ products <- sapply(files, read_excel, simplify = FALSE) %>%
 
 glimpse(products)
 ```
-![img](img/2.1 기초 & 색조 화장품 엑셀 정리.png)  
+![img](img/1.png)  
 
 ### 2.2 월별 추이 확인을 위한 전처리 및 시각화
 ```r
