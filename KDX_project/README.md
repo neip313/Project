@@ -125,7 +125,7 @@ products <- sapply(files, read_excel, simplify = FALSE) %>%
 
 glimpse(products)
 ```
-
+![](KDX_project/img/2.1 기초 & 색조 화장품 엑셀 정리.png)
 ### 2.2 월별 추이 확인을 위한 전처리 및 시각화
 ```r
 # 전체 필터 넣기
