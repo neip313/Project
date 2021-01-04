@@ -12,7 +12,7 @@
   + 주제 : **"코로나19 발생 이후 색조 및 기초 화장품 수요 비교분석"**
             코로나19로 인한 마스크 일상화/의무화 시대, 화장품 업계 매출 추이를 살펴보고 발전 방향 제언하기
   + 역할 : 주제 및 방향성 설정, 코드 작성, ppt 제작           
-  + [결과물 링크](https://github.com/neip313/KDX_2020_project)
+  + [결과물 링크](https://github.com/neip313/Project/KDX_project)
   + 결과 : 3등, 우수상(R러뷰 팀) [→ 매경 기사 보기](https://www.mk.co.kr/news/it/view/2020/11/1187287/)
   ![](image/)
   
