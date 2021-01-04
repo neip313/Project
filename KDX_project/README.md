@@ -66,29 +66,8 @@
 
 ## 소스코드 리뷰
 ---
----
-title: "코로나19 발생 이후  색조 및 기초 화장품 수요 비교분석"
-author: Team R러뷰 (최나은, 박신형, 강다영)
-output:   
-  html_document:
-   toc: true
-   toc_float:
-     collapsed: true
-     smooth_scroll: true
-   theme: united
-   highlight: textmate
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE,
-                      warning = FALSE, message = FALSE)
-```
-
-# KDX_Contest_2020_final_analysis
- + 제공된 분석 환경 내 윈도우 폰트 설치 시, 오류 발생하여 출력 화면에서 한글 깨짐 현상 나타납니다. 
-
 ## 1. 준비 작업
-### 1.1 패키지 설치 및 불러오기
+### 1.1 패키지 설치 및 라이브러리 불러오기
 ```r
 # 패키지 설치하기
 install.packages("readxl")
@@ -102,9 +81,8 @@ install.packages("extrafont")
 install.packages('devtools')
 devtools::install_github('bbc/bbplot')
 ```
-
 ```{r}
-# 패키지 불러오기
+# 라이브러리 불러오기
 library(readxl)
 library(dplyr)
 library(tidyr)
@@ -114,9 +92,17 @@ library(lubridate)
 library(labeling)
 library(extrafont)
 ```
-  
-```{r}
-# 시각화 테마를 위한 bbplot 패키지 설치 
+- readxl: 엑셀 파일 읽어오기
+- dplyr: bind_rows, glimpse, filter, select, group_by, summarise 함수 사용
+- tidyr: seperate, join 함수 사용
+- reshape2: 피벗테이블 제작 시 사용(dcast, 최종 코드에는 이용 x)
+- ggplot2: 데이터 시각화
+- lubridate: 문자형 데이터 날짜형으로 변형
+- labeling: 그래프 축 단위 설정
+- extrafont: 그래프 내 폰트 설정  
+
+### 1.2. 시각화 테마를 위한 bbplot 패키지 설치
+```{r} 
 if(!require(pacman))install.packages("pacman")
 
 pacman::p_load('dplyr', 'tidyr', 'gapminder',
@@ -126,13 +112,14 @@ pacman::p_load('dplyr', 'tidyr', 'gapminder',
                'bbplot')
 
 ```
-
+- 좀 더 보기좋은 시각화를 위해 bbc 스타일 테마 적용
 
 ## 2. Mcorpotarion Data
 ### 2.1 기초 & 색조 화장품 엑셀 정리 
 ```{r}
 # 사용할 데이터만 정리하기(메이크업, 스킨케어)
-files <- list.files(path = "use_data", pattern = "*.xlsx", full.names = T)  
+# 분석에 필요한 메이크업, 스킨케어 제품 구매율만 따로 use_data에 넣어 사용
+files <- list.files(path = "use_data", pattern = "*.xlsx", full.names = T) 
 products <- sapply(files, read_excel, simplify = FALSE) %>% 
   bind_rows(.id = "id")
 
@@ -143,7 +130,7 @@ glimpse(products)
 ```{r}
 # 전체 필터 넣기
 filter_products <- group_by(products, 카테고리명, 구매날짜, 고객성별, 고객나이, 구매금액, 구매수) %>%
-  separate(구매날짜, into = c("구매연월", "삭제(일자)"), sep = 6) %>%
+  separate(구매날짜, into = c("구매연월", "삭제(일자)"), sep = 6) %>% 
   select(카테고리명, 구매연월, 고객성별, 고객나이, 구매금액, 구매수)
 
 head(filter_products, 2)
