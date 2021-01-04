@@ -81,7 +81,7 @@ install.packages("extrafont")
 install.packages('devtools')
 devtools::install_github('bbc/bbplot')
 ```
-```{r}
+```r
 # 라이브러리 불러오기
 library(readxl)
 library(dplyr)
@@ -102,7 +102,7 @@ library(extrafont)
 - extrafont: 그래프 내 폰트 설정  
 
 ### 1.2. 시각화 테마를 위한 bbplot 패키지 설치
-```{r} 
+```r 
 if(!require(pacman))install.packages("pacman")
 
 pacman::p_load('dplyr', 'tidyr', 'gapminder',
@@ -127,7 +127,7 @@ glimpse(products)
 ```
 
 ### 2.2 월별 추이 확인을 위한 전처리 및 시각화
-```{r}
+```r
 # 전체 필터 넣기
 filter_products <- group_by(products, 카테고리명, 구매날짜, 고객성별, 고객나이, 구매금액, 구매수) %>%
   separate(구매날짜, into = c("구매연월", "삭제(일자)"), sep = 6) %>% 
@@ -138,7 +138,7 @@ head(filter_products, 2)
 - 구매날짜가 총 8자리 ex) 20200630 으로 되어있어 보기도 지저분하고 예쁘지 못해 일자는 정리하고 월까지만 표시되도록 수정  
 - 필요한 카테고리만 선별
 
-```{r}
+```r
 # 성별&나이 결측치 제거하기(성별 F, M, 나이 0 이상만 추출)
 nomiss_products <- filter_products %>%
   filter(!is.na(고객성별) & !is.na(고객나이)) %>%
@@ -149,14 +149,14 @@ head(nomiss_products)
 - 고객나이가 (-)로 설정되어있는 결측치가 몇몇 있어 정확한 데이터 분석을 위해 제거  
 - NA 결측값을 모두 제거  
 
-```{r}
+```r
 # "메이크업 용품" 카테고리 추출
 cosmetics <- filter(nomiss_products, 카테고리명 == "메이크업 용품")
 
 cosmetics
 ```
 
-```{r}
+```r
 # 월별 데이터 합계_메이크업 용품
 summarise_cosmetics <- cosmetics %>%
   group_by(구매연월, 고객성별) %>%
@@ -166,14 +166,14 @@ summarise_cosmetics
 ```
 - summarise 함수를 이용하여 일자별 금액 합산  
 
-```{r}
+```r
 # "스킨 케어" 카테코리 추출
 skincare <- filter(nomiss_products, 카테고리명 == "스킨케어")
 
 skincare
 ```
 
-```{r}
+```r
 # 월별 데이터 합계_스킨케어
 summarise_skincare <- skincare %>%
   group_by(구매연월, 고객성별) %>%
@@ -182,7 +182,7 @@ summarise_skincare <- skincare %>%
 summarise_skincare
 ```
 
-```{r}
+```r
 # 시각화하기
 ## '단위: 억' 적용
 label_ko_num = function(num){
@@ -195,7 +195,7 @@ label_ko_num = function(num){
 ```
 - 구매금액의 합계가 너무 커 단위가 지저분하게 나오기에 억단위를 적용하여 보기 좋게 바꿈  
 
-```{r}
+```r
 #색조 화장품(메이크업 용품)_월별 추이_ppt.12p
 library(ggplot2)
 
@@ -215,7 +215,7 @@ theme(
 graph_cosmetics
 ```
 
-```{r}
+```r
 # 기초 화장품(스킨케어)_월별 추이_ppt.12p
 graph_skincare <- ggplot(summarise_skincare, aes(x = 구매연월, y = 금액합계, color = 고객성별)) +
   geom_point(size = 2) +
@@ -237,7 +237,7 @@ graph_skincare
 
 ### 2.3 실제 분석을 위한 데이터 전처리 및 시각화
 
-```{r}
+```r
 # 성별&나이 결측치 제거하기(성별 F, M, 나이 0 이상만 추출)
 nomiss_products <- products %>%
   filter(!is.na(고객성별) & !is.na(고객나이)) %>%
@@ -245,7 +245,7 @@ nomiss_products <- products %>%
   select(카테고리명, 구매날짜, 고객성별, 고객나이, OS유형, 구매금액, 구매수)
 ```
 
-```{r}
+```r
 # 비교값 만들기
 compare_products <- nomiss_products %>%
   group_by(카테고리명, 구매날짜, 고객성별) %>%
@@ -254,7 +254,7 @@ compare_products <- nomiss_products %>%
 head(compare_products)
 ```
 
-```{r}
+```r
 # 억 원 단위 생성
 label_ko_num = function(num){
   ko_num = function(x){
@@ -265,7 +265,7 @@ label_ko_num = function(num){
    }
 ```
 
-```{r}
+```r
 # 문자형 데이터 -> 날짜 데이터로 전환
 library(lubridate)
 
@@ -274,7 +274,7 @@ final_products <- compare_products %>%
 ```
 
 * 시각화
-```{r}
+```r
 # 색조화장품(메이크업 용품) 데이터 시각화 _ppt.14p
 
 final_products
@@ -305,7 +305,7 @@ graph_cosmetics <- ggplot(cosmetics, aes(x = 구매일, y = 금액합계, color 
 graph_cosmetics
 ```
 - 3개월 단위로 날짜를 정리
-```{r}
+```r
 # 기초화장품(스킨케어) 데이터 시각화_ppt.14p
 skincare <- final_products %>%
   filter(카테고리명 == "스킨케어")
@@ -336,12 +336,12 @@ graph_skincare
 ## 3. Shinhancard Data
 ### 3.1 신한카드 '화장품' 카테고리 데이터 전처리
 
-```{r}
+```r
 # 신한카드 오프라인 구매 데이터 불러오기 
 shinhancard <- read_xlsx("sample/Shinhancard.xlsx")
 ```
 
-```{r}
+```r
 # 신한카드 오프라인 구매 데이터 결측치 제거
 shinhancard <- shinhancard %>%
   select(-c(6:8))
@@ -349,7 +349,7 @@ shinhancard <- shinhancard %>%
 head(shinhancard)
 ```
 - 6열에서 부터 8열까지는 무의미한 열이므로 제거
-```{r}
+```r
 # 신한카드 데이터 필터링
 filter_sh_beauty <- shinhancard %>%
   select(업종, 일별, 성별, 연령대별, '카드이용건수(천건)') %>%
@@ -358,7 +358,7 @@ filter_sh_beauty <- shinhancard %>%
 head(filter_sh_beauty)
 ```
 
-```{r}
+```r
 # 신한카드 성별&나이 결측치 제거하기(성별 F, M, 나이 0 이상만 추출)
 nomiss_sh_beauty <- filter_sh_beauty %>%
   filter(!is.na(성별) & !is.na(연령대별)) %>%
@@ -367,7 +367,7 @@ nomiss_sh_beauty <- filter_sh_beauty %>%
 nomiss_sh_beauty
 ```
 
-```{r}
+```r
 # 신한카드 '화장품' 카테고리 구매수 합계
 sum_sh_beauty <- nomiss_sh_beauty %>%
   group_by(일별, 성별) %>%
@@ -376,7 +376,7 @@ sum_sh_beauty <- nomiss_sh_beauty %>%
 sum_sh_beauty
 ```
 
-```{r}
+```r
 # 신한카드 데이터 시계열 데이터로 변환
 final_sh_beauty <- sum_sh_beauty %>%
   mutate(구매일자 = ymd(일별))
@@ -386,7 +386,7 @@ final_sh_beauty
 
 ### 3.2 신한카드 데이터 시각화 
 
-```{r}
+```r
 # 신한카드 '화장품' 카테고리 데이터 시각화_ppt.13p
 graph_sh_beauty <- ggplot(final_sh_beauty, aes(x = 구매일자, y = 구매횟수, color = 성별)) +
   geom_smooth() + geom_point(size = 0.1) +
@@ -407,19 +407,19 @@ graph_sh_beauty
 
 ## 4. Naver Keyword Data
 ### 4.1 마스크 키워드 검색량 데이터 
-```{r}
+```r
 # 마스크 키워드 검색량 데이터 불러오기
 mask <- read_excel("mask_keywords_data.xlsx")
 ```
 
-```{r}
+```r
 # 문자형 데이터를 숫자형으로 변환
 
 mask$마스크검색량 <- as.numeric(mask$마스크검색량)
 ```
 - 데이터가 문자형(chr)으로 되어있어 ggplot이 인식을 하지 못함. as.numeric 함수를 이용하여 숫자형 데이터로 전환
 
-```{r}
+```r
 # 문자형 데이터를 날짜형으로 변환
 final_mask <- mask %>%
   mutate(검색일자 = ymd(구매날짜))
@@ -427,7 +427,7 @@ final_mask <- mask %>%
 final_mask
 ```
 - 날짜 데이터를 r이 날짜로 인식하지 못하고 문자형으로 인식하여 날짜형 데이터로 전환
-```{r}
+```r
 # 마스크 키워드 검색량 데이터 시각화_ppt.15p
 graph_mask <- ggplot(final_mask, aes(x = 검색일자, y = 마스크검색량)) +
   geom_smooth(color = "#EB3232") +
@@ -445,18 +445,18 @@ graph_mask
                                                               
                                                               
 ### 4.2 (색조 & 기초) 화장품 키워드 검색량 데이터 
-```{r}
+```r
 # (색조 & 기초) 화장품 키워드 검색량 데이터 불러오기
 makeup <- read_excel("색조 vs 기초 화장품 키워드 검색량.xlsx")
 ```
 
-```{r}
+```r
 # 문자형 데이터를 숫자형으로 변환
 makeup$색조화장품 <- as.numeric(makeup$색조화장품)
 makeup$기초화장품 <- as.numeric(makeup$기초화장품)
 ```
 
-```{r}
+```r
 # 문자형 데이터를 날짜형으로 변환
 trans_makeup <- makeup %>%
   mutate(검색일자 = ymd(날짜))
@@ -465,7 +465,7 @@ trans_makeup
 ```
 
 
-```{r}
+```r
 # 색조 & 기초 메이크업 화장품 키워드 검색량 데이터 시각화_ppt.16p
 
 graph_makeup <- ggplot(trans_makeup, aes(x = 검색일자, y = `색조 & 기초 화장품 검색량`)) +
@@ -485,13 +485,13 @@ graph_makeup
 ```
 
 ### 4.3 (립 & 아이) 화장품 키워드 검색량 데이터 
-```{r}
+```r
 # (립 & 아이) 화장품 키워드 검색량 데이터 불러오기
 lipeye <- read_excel("메이크업 제품 비교(아이, 립).xlsx")
 ```
 
 
-```{r}
+```r
 # 문자형 데이터를 날짜형으로 변환
 trans_lipeye <- lipeye %>%
   mutate(검색일자 = ymd(날짜))
@@ -500,7 +500,7 @@ trans_lipeye
 ```
 
 
-```{r}
+```r
 # 립 & 아이 메이크업 화장품 키워드 검색량 데이터 시각화_ppt.15p
 
 graph_lipeye <- ggplot(trans_lipeye, aes(x = 검색일자, y = `립 & 아이 메이크업 검색량`)) +
@@ -521,18 +521,18 @@ graph_lipeye
 - y축의 단위를 설정, 10단위로 끊어서 보기  
 
 ### 4.4 (마스크프루프) 화장품 키워드 검색량 데이터 
-```{r}
+```r
 # (마스크프루프) 화장품 키워드 검색량 데이터 불러오기
 maskproof <- read_excel("마스크프루프 키워드 데이터.xlsx")
 ```
 
-```{r}
+```r
 # 문자형 데이터를 숫자형으로 변환
 maskproof$마스크프루프 <- as.numeric(maskproof$마스크프루프)
 ```
 
 
-```{r}
+```r
 # 문자형 데이터를 날짜형으로 변환
 trans_maskproof <- maskproof %>%
   mutate(검색일자 = ymd(날짜))
@@ -540,7 +540,7 @@ trans_maskproof <- maskproof %>%
 trans_maskproof
 ```
 
-```{r}
+```r
 # 마스크프루프 화장품 키워드 검색량 데이터 시각화
 
 graph_maskproof <- ggplot(trans_maskproof, aes(x = 검색일자, y = `마스크프루프 제품 검색량`)) +
