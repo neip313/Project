@@ -125,7 +125,7 @@ products <- sapply(files, read_excel, simplify = FALSE) %>%
 
 glimpse(products)
 ```
-![결과값](img/2.1 기초 & 색조 화장품 엑셀 정리.png)
+![img](img/2.1 기초 & 색조 화장품 엑셀 정리.png)  
 
 ### 2.2 월별 추이 확인을 위한 전처리 및 시각화
 ```r
