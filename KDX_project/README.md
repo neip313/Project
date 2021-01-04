@@ -138,6 +138,8 @@ filter_products <- group_by(products, 카테고리명, 구매날짜, 고객성�
 
 head(filter_products, 2)
 ```
+![img](img/2.png)  
+
 - 구매날짜가 총 8자리 ex) 20200630 으로 되어있어 보기도 지저분하고 예쁘지 못해 일자는 정리하고 월까지만 표시되도록 수정  
 - 필요한 카테고리만 선별
 
@@ -149,6 +151,8 @@ nomiss_products <- filter_products %>%
 
 head(nomiss_products)
 ```
+![img](img/3.png)  
+
 - 고객나이가 (-)로 설정되어있는 결측치가 몇몇 있어 정확한 데이터 분석을 위해 제거  
 - NA 결측값을 모두 제거  
 
@@ -158,6 +162,8 @@ cosmetics <- filter(nomiss_products, 카테고리명 == "메이크업 용품")
 
 cosmetics
 ```
+![img](img/4.png)  
+
 
 ```r
 # 월별 데이터 합계_메이크업 용품
@@ -167,6 +173,8 @@ summarise_cosmetics <- cosmetics %>%
 
 summarise_cosmetics
 ```
+![img](img/4.png)  
+
 - summarise 함수를 이용하여 일자별 금액 합산  
 
 ```r
@@ -175,6 +183,8 @@ skincare <- filter(nomiss_products, 카테고리명 == "스킨케어")
 
 skincare
 ```
+![img](img/5.png)  
+
 
 ```r
 # 월별 데이터 합계_스킨케어
@@ -184,6 +194,8 @@ summarise_skincare <- skincare %>%
 
 summarise_skincare
 ```
+![img](img/6.png)  
+
 
 ```r
 # 시각화하기
@@ -217,6 +229,8 @@ theme(
 
 graph_cosmetics
 ```
+![img](img/7.png)  
+
 
 ```r
 # 기초 화장품(스킨케어)_월별 추이_ppt.12p
@@ -235,6 +249,8 @@ graph_skincare <- ggplot(summarise_skincare, aes(x = 구매연월, y = 금액합
 
 graph_skincare
 ```
+![img](img/8.png)  
+
 - 더 나은 시각화를 위해 x축과 y축의 사이즈와 글씨체를 설정해주고, 선의 색을 지정  
 - bbc_style이라는 테마를 사용하여 보기 좋게 시각화  
 
@@ -256,6 +272,7 @@ compare_products <- nomiss_products %>%
 
 head(compare_products)
 ```
+![img](img/9.png)  
 
 ```r
 # 억 원 단위 생성
@@ -307,6 +324,8 @@ graph_cosmetics <- ggplot(cosmetics, aes(x = 구매일, y = 금액합계, color 
 
 graph_cosmetics
 ```
+![img](img/10.png)  
+
 - 3개월 단위로 날짜를 정리
 ```r
 # 기초화장품(스킨케어) 데이터 시각화_ppt.14p
@@ -335,6 +354,7 @@ graph_skincare <- ggplot(skincare, aes(x = 구매일, y = 금액합계, color = 
 
 graph_skincare
 ```
+![img](img/11.png)  
 
 ## 3. Shinhancard Data
 ### 3.1 신한카드 '화장품' 카테고리 데이터 전처리
@@ -351,6 +371,8 @@ shinhancard <- shinhancard %>%
 
 head(shinhancard)
 ```
+![img](img/12.png)  
+
 - 6열에서 부터 8열까지는 무의미한 열이므로 제거
 ```r
 # 신한카드 데이터 필터링
@@ -360,6 +382,7 @@ filter_sh_beauty <- shinhancard %>%
 
 head(filter_sh_beauty)
 ```
+![img](img/13.png)  
 
 ```r
 # 신한카드 성별&나이 결측치 제거하기(성별 F, M, 나이 0 이상만 추출)
@@ -369,6 +392,7 @@ nomiss_sh_beauty <- filter_sh_beauty %>%
 
 nomiss_sh_beauty
 ```
+![img](img/14.png)  
 
 ```r
 # 신한카드 '화장품' 카테고리 구매수 합계
@@ -378,6 +402,7 @@ sum_sh_beauty <- nomiss_sh_beauty %>%
 
 sum_sh_beauty
 ```
+![img](img/15.png)  
 
 ```r
 # 신한카드 데이터 시계열 데이터로 변환
@@ -386,6 +411,7 @@ final_sh_beauty <- sum_sh_beauty %>%
 
 final_sh_beauty
 ```
+![img](img/16.png)  
 
 ### 3.2 신한카드 데이터 시각화 
 
@@ -407,6 +433,7 @@ graph_sh_beauty <- ggplot(final_sh_beauty, aes(x = 구매일자, y = 구매횟�
    
 graph_sh_beauty
 ```
+![img](img/17.png)  
 
 ## 4. Naver Keyword Data
 ### 4.1 마스크 키워드 검색량 데이터 
@@ -429,6 +456,8 @@ final_mask <- mask %>%
 
 final_mask
 ```
+![img](img/18.png)  
+
 - 날짜 데이터를 r이 날짜로 인식하지 못하고 문자형으로 인식하여 날짜형 데이터로 전환
 ```r
 # 마스크 키워드 검색량 데이터 시각화_ppt.15p
@@ -445,6 +474,7 @@ graph_mask <- ggplot(final_mask, aes(x = 검색일자, y = 마스크검색량)) 
   
 graph_mask
 ```
+![img](img/19.png)  
                                                               
                                                               
 ### 4.2 (색조 & 기초) 화장품 키워드 검색량 데이터 
@@ -466,6 +496,7 @@ trans_makeup <- makeup %>%
 
 trans_makeup
 ```
+![img](img/20.png)  
 
 
 ```r
@@ -486,7 +517,7 @@ graph_makeup <- ggplot(trans_makeup, aes(x = 검색일자, y = `색조 & 기초 
 
 graph_makeup
 ```
-
+![img](img/21.png) 
 ### 4.3 (립 & 아이) 화장품 키워드 검색량 데이터 
 ```r
 # (립 & 아이) 화장품 키워드 검색량 데이터 불러오기
@@ -501,7 +532,7 @@ trans_lipeye <- lipeye %>%
 
 trans_lipeye
 ```
-
+![img](img/22.png) 
 
 ```r
 # 립 & 아이 메이크업 화장품 키워드 검색량 데이터 시각화_ppt.15p
@@ -521,6 +552,7 @@ graph_lipeye <- ggplot(trans_lipeye, aes(x = 검색일자, y = `립 & 아이 메
 
 graph_lipeye
 ```
+![img](img/23.png) 
 - y축의 단위를 설정, 10단위로 끊어서 보기  
 
 ### 4.4 (마스크프루프) 화장품 키워드 검색량 데이터 
@@ -542,7 +574,7 @@ trans_maskproof <- maskproof %>%
 
 trans_maskproof
 ```
-
+![img](img/24.png) 
 ```r
 # 마스크프루프 화장품 키워드 검색량 데이터 시각화
 
@@ -559,7 +591,7 @@ graph_maskproof <- ggplot(trans_maskproof, aes(x = 검색일자, y = `마스크�
   
 graph_maskproof
 ```
-
+![img](img/25.png) 
 
 
 
