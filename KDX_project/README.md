@@ -293,6 +293,7 @@ library(lubridate)
 final_products <- compare_products %>%
   mutate(구매일 = ymd(구매날짜))
 ```
+# lubridate 라이브러리를 상용해 뮨자형 데이터를 날짜형 데이터로 전환  
 
 * 시각화
 ```r
@@ -303,7 +304,7 @@ final_products
 cosmetics <- final_products %>%
   filter(카테고리명 == "메이크업 용품")
 
-font_import(pattern = "NanumSquare")
+font_import(pattern = "NanumSquare") # 
 
 # loadfonts(device = "win")
 
