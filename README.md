@@ -30,3 +30,12 @@
   - 결과 : 
     + Public chart 127/287 (전체 참가 팀: 658팀) 
     + Private chart 124/287 (전체 참가 팀: 658팀)
+
+- 🍀 DACON : Data Science AI Competitions - DACON "소설 작가 분류 AI 경진대회"
+  (자연어 처리 경험을 위해 참가) 
+  - 작업툴 : Python, 
+  - 인원 : 
+  - 기간 :  
+  - 내용 : 
+  - 기여 : 코드 작성(전처리, 모델링) 
+  - 결과 : 
