@@ -31,11 +31,10 @@
     + Public chart 127/287 (전체 참가 팀: 658팀) 
     + Private chart 124/287 (전체 참가 팀: 658팀)
 
-- 🍀 DACON : Data Science AI Competitions - DACON "소설 작가 분류 AI 경진대회"
-  (자연어 처리 경험을 위해 참가) 
-  - 작업툴 : Python, 
-  - 인원 : 
-  - 기간 :  
-  - 내용 : 
-  - 기여 : 코드 작성(전처리, 모델링) 
+- 🍀 CaMall : Counselor Mall  - AmorePacific(협력사)
+  - 작업툴 : R, SQL, R Shiny
+  - 인원 : 4
+  - 기간 : 2021.03.03 ~  
+  - 내용 : 아모레퍼시픽의 카운셀러몰(일명 카몰)의 전략 스마트레포트를 생성
+  - 기여 : 
   - 결과 : 
