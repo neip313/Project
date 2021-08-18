@@ -42,6 +42,32 @@
       - 새로운 기능을 성공을 의미하는 Metric 정의
       - 새로운 Feature(기능) 출시 후, Metric 모니터링 및 해석
       - 어떤 고객들이 리텐션이 높은가?
+    - 비즈니스 분석 
+      - 비즈니스 KPI 모니터링
+      - 매출, 비용, 손익 등을 분석
+      - 빠른 의사 결정을 위한 데이터 분석
+      - 전략 수립
+      - 가설 검증, AB Test
+    - 퍼포먼스 마케팅 
+      - 마케팅 KPI 모니터링
+      - ROAS(Return on Ad Spend) = 매출/광고 집행 비용
+      - 유저 리텐션(Retention) : 서비스를 계속 사용하는지
+      - LTV(Life Time Value) : 고객 생애 가치
+      - UAC(User Acquisition Cost) : 유저 획득 비용
+      - 광고 최적화, 광고 AB Test 등
+    - CRM 마케팅
+      - Customer Relationship Management, 고객과 커뮤니케이션하고 분석
+      - 유저 Life Cycle 관리
+      - AARRR 퍼널 별 KPI를 달성하기 위한 마케팅 전략 수립
+      - 마케팅 KPI 모니터링
+      - 유저 리텐션(Retention) : 서비스를 계속 사용하는지
+      - LTV(Life Time Value) : 고객 생애 가치
+      - (고객 등급이 있는 경우) 고객 등급별 분석
+      - (구독 모델이 존재하는 경우) 구독 모델 기획 및 분석
+      - 고객이 계속 제품을 사용하도록 문자, 이메일, Push Notification 기획 및 분석
+      - 쿠폰 마케팅(어떤 금액대의 쿠폰을 누구에게 보낼 것인가)
+      - 고객 Segment 분석
+      - AB Test
   - 결과 : 카운셀러몰 앱 매출 50억원 달성 
 ---
 - 🍀 D2I_Dashboard Project
